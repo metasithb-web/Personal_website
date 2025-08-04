@@ -3,203 +3,164 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Metasith Bunditwataphong (BEW) | Architecture Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Anybody:wght@400;700&display=swap" rel="stylesheet">
+  <title>Metasith Bunditwataphong (BEW) | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Besley:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      background: #000;
+      margin: 0;
+      background-color: #000;
       color: #fff;
-      font-family: 'Anybody', sans-serif;
-      line-height: 1.6;
+      font-family: 'Besley', serif;
       scroll-behavior: smooth;
     }
     header {
-      text-align: center;
-      padding: 5rem 1rem 3rem;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #000;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #333;
     }
     header h1 {
-      font-size: 3rem;
+      font-size: 1.2rem;
       letter-spacing: 1px;
     }
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
-    nav {
-      text-align: center;
-      margin: 2rem 0;
-    }
     nav a {
-      color: white;
+      color: #fff;
       text-decoration: none;
-      margin: 0 1rem;
-      font-size: 1.1rem;
-      transition: color 0.3s ease;
+      margin-left: 2rem;
+      font-size: 0.9rem;
     }
-    nav a:hover {
-      color: #aaa;
-    }
-
     section {
-      max-width: 900px;
-      margin: 4rem auto;
-      padding: 0 1rem;
+      min-height: 100vh;
+      padding: 6rem 2rem 2rem;
     }
     h2 {
       font-size: 2rem;
-      margin-bottom: 1.5rem;
-      border-bottom: 1px solid #333;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #444;
       padding-bottom: 0.5rem;
     }
-
-    .project-grid {
+    .projects-grid {
       display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      margin-top: 2rem;
     }
     .project {
-      background: #111;
+      border: 1px solid #444;
       padding: 1rem;
-      border: 1px solid #222;
-      border-radius: 8px;
     }
     .project img {
       width: 100%;
-      border: 1px solid #333;
-      border-radius: 4px;
+      height: auto;
+      display: block;
+      margin-bottom: 0.5rem;
     }
-    .project h3 {
-      margin-top: 1rem;
-      font-size: 1.2rem;
+    .video-container {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
     }
-    .project p {
-      font-size: 0.95rem;
-      color: #ccc;
-    }
-
-    video {
+    .video-container video {
       width: 100%;
-      border: 1px solid #333;
-      border-radius: 8px;
-      margin-bottom: 1rem;
+      max-width: 800px;
+      height: auto;
     }
-
     footer {
       text-align: center;
-      padding: 3rem 1rem;
+      padding: 2rem;
       font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid #222;
-      margin-top: 5rem;
+      border-top: 1px solid #333;
     }
-
-    a {
-      color: #ffa500;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      nav a {
-        display: inline-block;
-        margin: 0.5rem;
-      }
+    a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <h1>Metasith Bunditwataphong (BEW)</h1>
-    <p>Architecture Portfolio | 2D · 3D · Animation</p>
-  </header>
-
+<header>
+  <h1>Metasith Bunditwataphong (BEW)</h1>
   <nav>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#animations">Animations</a>
     <a href="#contact">Contact</a>
   </nav>
+</header>
 
-  <!-- About -->
-  <section id="about">
-    <h2>About</h2>
-    <p>I’m an architecture student exploring the intersection of design, resilience, and digital craft. My work involves building systems that respond to flooding, modular housing, and community-focused spaces — all through a lens of speculative design and storytelling in both 2D, 3D, and animation.</p>
-  </section>
+<section id="about">
+  <h2>About</h2>
+  <p>Hello, I’m Metasith Bunditwataphong, also known as BEW. I'm an architecture student and designer passionate about 2D/3D storytelling, digital fabrication, and environmental resilience. This portfolio showcases a selection of my design projects, animations, and conceptual work.</p>
+</section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects (2D & 3D)</h2>
-    <div class="project-grid">
-
-      <div class="project">
-        <img src="images/project1.jpg" alt="Project 1">
-        <h3>Floating Crane Habitat (2D)</h3>
-        <p>Flood-resilient vertical infrastructure across the Chao Phraya River using reused cranes and floating platforms.</p>
-      </div>
-
-      <div class="project">
-        <img src="images/project2.jpg" alt="Project 2">
-        <h3>Urban E-Waste Workshop (2D)</h3>
-        <p>A market-workshop system on BTS bridge connections promoting sustainable e-waste recycling and community action.</p>
-      </div>
-
-      <div class="project">
-        <img src="images/project3.jpg" alt="Project 3">
-        <h3>Modular River Pods (3D)</h3>
-        <p>Container-based living spaces stacked vertically for mobility and safety in flood-prone cities.</p>
-      </div>
-
-      <div class="project">
-        <img src="images/project4.jpg" alt="Project 4">
-        <h3>Cooling Tower Pavilion (3D)</h3>
-        <p>A conceptual tower integrated with VRF cooling and passive environmental control systems.</p>
-      </div>
-
-      <div class="project">
-        <img src="images/project5.jpg" alt="Project 5">
-        <h3>Vertical Garden Structure (3D)</h3>
-        <p>Public community space featuring recycled scaffolding and sustainable material reuse.</p>
-      </div>
-
+<section id="projects">
+  <h2>Projects (2D / 3D)</h2>
+  <div class="projects-grid">
+    <div class="project">
+      <img src="project1.jpg" alt="Project 1" />
+      <h3>Floating Crane Habitat</h3>
+      <p>A flood-resilient vertical village built from cranes and reused containers in Bangkok.</p>
     </div>
-  </section>
+    <div class="project">
+      <img src="project2.jpg" alt="Project 2" />
+      <h3>Urban Community Node</h3>
+      <p>A modular platform for market, leisure, and learning using urban infrastructure.</p>
+    </div>
+    <div class="project">
+      <img src="project3.jpg" alt="Project 3" />
+      <h3>Digital Pavilion</h3>
+      <p>A generative 3D pavilion coded with Houdini for interactive public experience.</p>
+    </div>
+    <div class="project">
+      <img src="project4.jpg" alt="Project 4" />
+      <h3>VR Living Pod</h3>
+      <p>Future-focused micro-living design with spatial flow simulation.</p>
+    </div>
+    <div class="project">
+      <img src="project5.jpg" alt="Project 5" />
+      <h3>E-Waste Hack Workshop</h3>
+      <p>Design of a community hub to repair, sort, and educate on electronic waste.</p>
+    </div>
+  </div>
+</section>
 
-  <!-- Animations -->
-  <section id="animations">
-    <h2>Animations</h2>
+<section id="animations">
+  <h2>Animations</h2>
+  <div class="video-container">
+    <div>
+      <video controls>
+        <source src="animation1.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p><strong>Title:</strong> Adaptive Flood City (Houdini Simulation)</p>
+    </div>
+    <div>
+      <video controls>
+        <source src="animation2.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <p><strong>Title:</strong> E-Waste Flow System (After Effects / C4D)</p>
+    </div>
+  </div>
+</section>
 
-    <video controls>
-      <source src="videos/animation1.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <p><strong>Floating Habitat Simulation:</strong> Animation showing how the flood-resilient habitat responds dynamically to water levels.</p>
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: <a href="mailto:metasith.bew@gmail.com">metasith.bew@gmail.com</a></p>
+  <p>Instagram: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
+  <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+</section>
 
-    <video controls>
-      <source src="videos/animation2.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <p><strong>Container Market in Motion:</strong> Storyboard-style video presenting the activity and transformation of a modular container village.</p>
-
-  </section>
-
-  <!-- Contact -->
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:metasith.bew@example.com">metasith.bew@example.com</a></p>
-    <p>Instagram: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
-    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">Metasith Bunditwataphong</a></p>
-  </section>
-
-  <footer>
-    <p>© 2025 Metasith Bunditwataphong (BEW). All rights reserved.</p>
-  </footer>
+<footer>
+  <p>© 2025 Metasith Bunditwataphong. All rights reserved.</p>
+</footer>
 
 </body>
 </html>
