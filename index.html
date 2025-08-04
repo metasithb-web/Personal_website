@@ -1,166 +1,681 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Metasith Bunditwataphong (BEW) | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Besley:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: 'Besley', serif;
-      scroll-behavior: smooth;
-    }
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background: #000;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-bottom: 1px solid #333;
-    }
-    header h1 {
-      font-size: 1.2rem;
-      letter-spacing: 1px;
-    }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin-left: 2rem;
-      font-size: 0.9rem;
-    }
-    section {
-      min-height: 100vh;
-      padding: 6rem 2rem 2rem;
-    }
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #444;
-      padding-bottom: 0.5rem;
-    }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .project {
-      border: 1px solid #444;
-      padding: 1rem;
-    }
-    .project img {
-      width: 100%;
-      height: auto;
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-    .video-container {
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 2rem;
-    }
-    .video-container video {
-      width: 100%;
-      max-width: 800px;
-      height: auto;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.9rem;
-      border-top: 1px solid #333;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metasith Bunditwataphong - Architect</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Custom Cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        .cursor.hover {
+            transform: scale(2);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 300;
+            transition: opacity 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.7;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #fff;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Content */
+        .main-content {
+            min-height: 100vh;
+            padding-top: 120px;
+        }
+
+        .section {
+            min-height: 100vh;
+            padding: 2rem;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 80vh;
+        }
+
+        .hero-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 8vw, 12rem);
+            line-height: 0.9;
+            margin-bottom: 2rem;
+            letter-spacing: 3px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .hero-description {
+            font-size: 1rem;
+            max-width: 600px;
+            line-height: 1.6;
+            opacity: 0.7;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transition: all 0.3s ease;
+            cursor: none;
+        }
+
+        .project-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 250px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            opacity: 0.5;
+        }
+
+        .project-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+
+        .project-type {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            line-height: 1.6;
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Animation Section */
+        .animation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .animation-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .animation-placeholder {
+            width: 100%;
+            height: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.5;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+            margin-top: 4rem;
+        }
+
+        .about-text {
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .about-details {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .detail-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .detail-label {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            opacity: 0.7;
+        }
+
+        .detail-value {
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .contact-info {
+            font-size: 1.2rem;
+            line-height: 2;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.02);
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 300;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            padding: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #fff;
+        }
+
+        .submit-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 1rem 2rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            cursor: none;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 6vw, 6rem);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            font-weight: 300;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .animation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth scroll effect */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
 
-<header>
-  <h1>Metasith Bunditwataphong (BEW)</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#animations">Animations</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#home" class="logo">BEW</a>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showSection('home')">Home</a></li>
+                <li><a href="#projects" onclick="showSection('projects')">Projects</a></li>
+                <li><a href="#animation" onclick="showSection('animation')">Animation</a></li>
+                <li><a href="#about" onclick="showSection('about')">About</a></li>
+                <li><a href="#contact" onclick="showSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
 
-<section id="about">
-  <h2>About</h2>
-  <p>Hello, I’m Metasith Bunditwataphong, also known as BEW. I'm an architecture student and designer passionate about 2D/3D storytelling, digital fabrication, and environmental resilience. This portfolio showcases a selection of my design projects, animations, and conceptual work.</p>
-</section>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero fade-in">
+                    <h1 class="hero-title">METASITH<br>BUNDITWATAPHONG</h1>
+                    <p class="hero-subtitle">ARCHITECT & DESIGNER</p>
+                    <p class="hero-description">
+                        Creating innovative architectural solutions that blend functionality with aesthetic excellence. 
+                        Specializing in contemporary design with a focus on sustainable and human-centered spaces.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<section id="projects">
-  <h2>Projects (2D / 3D)</h2>
-  <div class="projects-grid">
-    <div class="project">
-      <img src="project1.jpg" alt="Project 1" />
-      <h3>Floating Crane Habitat</h3>
-      <p>A flood-resilient vertical village built from cranes and reused containers in Bangkok.</p>
-    </div>
-    <div class="project">
-      <img src="project2.jpg" alt="Project 2" />
-      <h3>Urban Community Node</h3>
-      <p>A modular platform for market, leisure, and learning using urban infrastructure.</p>
-    </div>
-    <div class="project">
-      <img src="project3.jpg" alt="Project 3" />
-      <h3>Digital Pavilion</h3>
-      <p>A generative 3D pavilion coded with Houdini for interactive public experience.</p>
-    </div>
-    <div class="project">
-      <img src="project4.jpg" alt="Project 4" />
-      <h3>VR Living Pod</h3>
-      <p>Future-focused micro-living design with spatial flow simulation.</p>
-    </div>
-    <div class="project">
-      <img src="project5.jpg" alt="Project 5" />
-      <h3>E-Waste Hack Workshop</h3>
-      <p>Design of a community hub to repair, sort, and educate on electronic waste.</p>
-    </div>
-  </div>
-</section>
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">PROJECTS</h2>
+                    <p class="section-subtitle">A collection of architectural works in 2D and 3D</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <div class="project-card fade-in">
+                        <div class="project-image">2D/3D Visualization Available</div>
+                        <h3 class="project-title">RESIDENTIAL COMPLEX</h3>
+                        <p class="project-type">RESIDENTIAL • 2024</p>
+                        <p class="project-description">
+                            Modern residential complex featuring sustainable design principles and community-focused amenities. 
+                            Integration of green spaces with contemporary living solutions.
+                        </p>
+                    </div>
+                    
+                    <div class="project-card fade-in">
+                        <div class="project-image">2D/3D Visualization Available</div>
+                        <h3 class="project-title">CULTURAL CENTER</h3>
+                        <p class="project-type">CULTURAL • 2024</p>
+                        <p class="project-description">
+                            A multi-purpose cultural center designed to foster community engagement through 
+                            flexible spaces and innovative architectural elements.
+                        </p>
+                    </div>
+                    
+                    <div class="project-card fade-in">
+                        <div class="project-image">2D/3D Visualization Available</div>
+                        <h3 class="project-title">OFFICE TOWER</h3>
+                        <p class="project-type">COMMERCIAL • 2023</p>
+                        <p class="project-description">
+                            High-rise office building with emphasis on natural lighting, energy efficiency, 
+                            and creating inspiring work environments for modern businesses.
+                        </p>
+                    </div>
+                    
+                    <div class="project-card fade-in">
+                        <div class="project-image">2D/3D Visualization Available</div>
+                        <h3 class="project-title">EDUCATIONAL FACILITY</h3>
+                        <p class="project-type">EDUCATION • 2023</p>
+                        <p class="project-description">
+                            Innovative educational space designed to promote collaborative learning through 
+                            flexible layouts and technology-integrated environments.
+                        </p>
+                    </div>
+                    
+                    <div class="project-card fade-in">
+                        <div class="project-image">2D/3D Visualization Available</div>
+                        <h3 class="project-title">URBAN PAVILION</h3>
+                        <p class="project-type">PUBLIC • 2023</p>
+                        <p class="project-description">
+                            Temporary pavilion structure exploring the relationship between public space 
+                            and architectural intervention in urban environments.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="animations">
-  <h2>Animations</h2>
-  <div class="video-container">
-    <div>
-      <video controls>
-        <source src="animation1.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p><strong>Title:</strong> Adaptive Flood City (Houdini Simulation)</p>
-    </div>
-    <div>
-      <video controls>
-        <source src="animation2.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <p><strong>Title:</strong> E-Waste Flow System (After Effects / C4D)</p>
-    </div>
-  </div>
-</section>
+        <!-- Animation Section -->
+        <section id="animation" class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">ANIMATION</h2>
+                    <p class="section-subtitle">Architectural visualization in motion</p>
+                </div>
+                
+                <div class="animation-grid">
+                    <div class="animation-card fade-in">
+                        <div class="animation-placeholder">Animation 1 - Architectural Walkthrough</div>
+                        <h3 class="project-title">PROJECT WALKTHROUGH</h3>
+                        <p class="project-description">
+                            Immersive 3D animation showcasing the spatial experience and design concepts 
+                            of our latest residential project through dynamic camera movements.
+                        </p>
+                    </div>
+                    
+                    <div class="animation-card fade-in">
+                        <div class="animation-placeholder">Animation 2 - Design Process</div>
+                        <h3 class="project-title">DESIGN EVOLUTION</h3>
+                        <p class="project-description">
+                            Time-lapse animation demonstrating the design development process from 
+                            initial concept sketches to final architectural realization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<section id="contact">
-  <h2>Contact</h2>
-  <p>Email: <a href="mailto:metasith.bew@gmail.com">metasith.bew@gmail.com</a></p>
-  <p>Instagram: <a href="https://instagram.com/yourhandle" target="_blank">@yourhandle</a></p>
-  <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
-</section>
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">ABOUT</h2>
+                    <p class="section-subtitle">Architecture as a medium for human connection</p>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-text fade-in">
+                        <p>
+                            As an architect, I believe in creating spaces that not only serve their functional purpose 
+                            but also inspire and uplift the human spirit. My approach combines contemporary design 
+                            principles with sustainable practices to create environments that are both beautiful and responsible.
+                        </p>
+                        <br>
+                        <p>
+                            With a focus on innovative solutions and attention to detail, I work closely with clients 
+                            to bring their visions to life while maintaining the highest standards of architectural excellence. 
+                            Each project is an opportunity to explore new possibilities and push the boundaries of conventional design.
+                        </p>
+                    </div>
+                    
+                    <div class="about-details fade-in">
+                        <div class="detail-item">
+                            <div class="detail-label">EDUCATION</div>
+                            <div class="detail-value">Master of Architecture</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">SPECIALIZATION</div>
+                            <div class="detail-value">Contemporary & Sustainable Design</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">EXPERIENCE</div>
+                            <div class="detail-value">5+ Years in Architectural Practice</div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <div class="detail-label">LOCATION</div>
+                            <div class="detail-value">Bangkok, Thailand</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<footer>
-  <p>© 2025 Metasith Bunditwataphong. All rights reserved.</p>
-</footer>
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">CONTACT</h2>
+                    <p class="section-subtitle">Let's create something extraordinary together</p>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info fade-in">
+                        <p>METASITH BUNDITWATAPHONG</p>
+                        <p>ARCHITECT & DESIGNER</p>
+                        <br>
+                        <p>EMAIL: contact@bew-architect.com</p>
+                        <p>PHONE: +66 XX XXX XXXX</p>
+                        <p>LOCATION: Bangkok, Thailand</p>
+                        <br>
+                        <p>Available for new projects and collaborations.</p>
+                    </div>
+                    
+                    <div class="contact-form fade-in">
+                        <form>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="project">Project Type</label>
+                                <input type="text" id="project" name="project">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">SEND MESSAGE</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
+    <script>
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        function animateCursor() {
+            cursor.style.left = mouseX + 'px';
+            cursor.style.top = mouseY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Cursor hover effect
+        const hoverElements = document.querySelectorAll('a, button, .project-card');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+
+        // Section navigation
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Add fade-in animation to new section
+            const newSection = document.getElementById(sectionId);
+            const fadeElements = newSection.querySelectorAll('.fade-in');
+            fadeElements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.1}s`;
+                el.style.animation = 'none';
+                setTimeout(() => {
+                    el.style.animation = 'fadeInUp 0.8s ease forwards';
+                }, 10);
+            });
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! I will get back to you soon.');
+        });
+
+        // Initialize fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0s';
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
